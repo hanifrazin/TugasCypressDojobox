@@ -19,3 +19,12 @@ Cypress.Commands.add('loginDemoBlaze', () => {
 Cypress.Commands.add('openDemoQA', () => {
     cy.visit('https://demoqa.com/automation-practice-form');
 })
+
+Cypress.Commands.add('loginAdminPkh', () => {
+    cy.visit('');
+    cy.get('#input-email').type('e@dojobox.id',{force:true}).should('have.value','e@dojobox.id');
+    cy.get('#input-password').type('admin',{force:true}).should('have.value','admin');
+    cy.get('#btn-login').contains('Login').click({force:true});
+    cy.get('.img-profile').should('be.visible');
+    cy.get('.mr-2 > b').should('be.visible').contains('Super Admin');
+})
