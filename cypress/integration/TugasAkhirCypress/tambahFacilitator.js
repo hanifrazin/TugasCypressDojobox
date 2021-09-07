@@ -25,7 +25,7 @@ describe('Cek Fungsionalitas Tambah Facilitator', () => {
         //   .and('have.class','fa-eye-slash').should('have.class','fa-eye-slash').click();
         // cy.wait(5000);
 
-        // cy.get('[style="position: relative;"] > .fa').and('have.class','show-hide').and('have.class','fa-eye-slash').click();
+        cy.get('[style="position: relative;"] > .fa').and('have.class','show-hide').and('have.class','fa-eye-slash').click();
         cy.get('#user_province_id').select(province).should('have.value',provinceId);
         cy.get('#user_city_id').select(city).should('have.value',cityId);
         cy.get('#user_subdistrict_id').select(subdistrict).should('have.value',subistrcitId);
@@ -38,8 +38,9 @@ describe('Cek Fungsionalitas Tambah Facilitator', () => {
         cy.get('select#user_area_subdistrict_id').should('be.disabled').contains(subdistrict).should('have.value',subistrcitId);
 
         cy.get('#add').click();
-        cy.get('#generalModal > .modal-dialog > .modal-content > .modal-header').contains('Success');
-        cy.get('#generalModal > .modal-dialog > .modal-content > .modal-footer > .btn').contains('OK').click({force:true});
+        cy.wait(1000)
+        // cy.get('#generalModal > .modal-dialog > .modal-content > .modal-header').contains('Success');
+        cy.get('#generalModal > .modal-dialog > .modal-content > .modal-footer > .btn').click();
         
     });
     Cypress.on('uncaught:exception', (err, runnable)=>{
