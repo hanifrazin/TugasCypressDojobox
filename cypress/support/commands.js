@@ -25,6 +25,7 @@ Cypress.Commands.add('loginAdminPkh', () => {
     cy.get('#input-email').type('e@dojobox.id',{force:true}).should('have.value','e@dojobox.id');
     cy.get('#input-password').type('admin',{force:true}).should('have.value','admin');
     cy.get('#btn-login').contains('Login').click({force:true});
+    cy.wait(3000)
     cy.get('.img-profile').should('be.visible');
     cy.get('.mr-2 > b').should('be.visible').contains('Super Admin');
 })
