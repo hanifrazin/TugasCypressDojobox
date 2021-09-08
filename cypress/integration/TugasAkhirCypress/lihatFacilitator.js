@@ -4,7 +4,7 @@ describe('Cek Fungsionalitas Lihat Facilitator',() => {
     });
     
     it('TC-001 Cari Data yang sudah di tambahkan', () => {
-        cy.get('#dataTable_filter > label > .form-control').type('Dojo-1631064940795').should('have.value','Dojo-1631064940795');
+        cy.searchDataPkh('Dojo-1631064940795');
         cy.buttonEllipsis('Lihat',1);
         cy.scrollTo('bottomRight',{duration:1000})
         // cy.scrollTo('topRight',{duration:1000});

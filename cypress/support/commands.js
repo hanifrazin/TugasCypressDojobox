@@ -33,7 +33,7 @@ Cypress.Commands.add('loginAdminPkh', () => {
 const btnRow = (barisKe) => `tbody > :nth-child(${barisKe}) > .dt-center > .btn-group`;
 Cypress.Commands.add('buttonEllipsis', (keterangan,barisKe) => {
     const chooseRow = btnRow(barisKe);
-    cy.scrollTo('topRight',{duration:1000});
+    cy.scrollTo('topRight',{duration:2000});
     cy.get(`${chooseRow} > .btn`).click();
     cy.wait(3000);
     cy.get(`${chooseRow}`)
@@ -49,4 +49,9 @@ Cypress.Commands.add('buttonEllipsis', (keterangan,barisKe) => {
       .contains(keterangan)
       .click({force:true});
     cy.wait(3000);
+})
+
+Cypress.Commands.add('searchDataPkh', (data) => {
+    cy.get('#dataTable_filter > label > .form-control').type(data).should('have.value',data);
+    // cy.wait(1000);
 })

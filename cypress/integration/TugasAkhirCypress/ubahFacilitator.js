@@ -18,7 +18,7 @@ describe('Cek Fungsionalitas Ubah Facilitator', () => {
     })
     
     it('TC-001 Ubah Data yang dipilih', () => {
-        cy.get('#dataTable_filter > label > .form-control').type('Dojo-1631064940795').should('have.value','Dojo-1631064940795');
+        cy.searchDataPkh('Dojo-1631064940795');
         cy.buttonEllipsis('Ubah',1);
 
         cy.get('.d-flex > .bg-white > .container-fluid > .text-gray-800')
