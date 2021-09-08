@@ -29,3 +29,24 @@ Cypress.Commands.add('loginAdminPkh', () => {
     cy.get('.img-profile').should('be.visible');
     cy.get('.mr-2 > b').should('be.visible').contains('Super Admin');
 })
+
+const btnRow = (barisKe) => `tbody > :nth-child(${barisKe}) > .dt-center > .btn-group`;
+Cypress.Commands.add('buttonEllipsis', (keterangan,barisKe) => {
+    const chooseRow = btnRow(barisKe);
+    cy.scrollTo('topRight',{duration:1000});
+    cy.get(`${chooseRow} > .btn`).click();
+    cy.wait(3000);
+    cy.get(`${chooseRow}`)
+      .should('have.class','w-100')
+      .and('have.class','show')
+      .and('be.visible');
+    cy.get(`${chooseRow} > .dropdown-menu`)
+      .should('have.class','show')
+      .and('be.visible');
+    cy.get(`${chooseRow} > .dropdown-menu > .dropdown-item`)
+      .should('have.length',3)
+      .and('be.visible')
+      .contains(keterangan)
+      .click({force:true});
+    cy.wait(3000);
+})
